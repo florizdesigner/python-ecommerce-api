@@ -5,7 +5,6 @@ import calendar;
 import time;
 from controllers.db_controller import create_order, get_order, get_orders, delete_order
 
-
 api = Flask(__name__)
 ordersGraphiteClient = statsd.StatsClient('147.45.41.137', 8125, prefix='orders')
 timingGraphiteClient = statsd.StatsClient('147.45.41.137', 8125)
@@ -16,7 +15,7 @@ def request_create_orders():
         time_start = round(time.time() * 1000)
         print(time_start)
         data = request.json
-        if (data['description'] == None or data['amount'] == None or data['user_id'] == None): raise ValueError            
+        if (data['description'] == None or data['amount'] == None or data['user_id'] == None): raise ValueError
         result = create_order(data['description'], data['amount'], data['user_id'])
         ordersGraphiteClient.set("create.succeeded", 1)
         timingGraphiteClient.timing("orders.create", round(time.time() * 1000) - time_start)
