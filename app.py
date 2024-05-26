@@ -5,8 +5,7 @@ import calendar;
 import time;
 from controllers.db_controller import create_order, get_order, get_orders, delete_order
 
-
-api = Flask(__name__)
+api = Flask(__name__, spec_path='/spec')
 ordersGraphiteClient = statsd.StatsClient('147.45.41.137', 8125, prefix='orders')
 timingGraphiteClient = statsd.StatsClient('147.45.41.137', 8125)
 
