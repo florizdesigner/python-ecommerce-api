@@ -1,0 +1,1 @@
+DB_DATA = "dbname=hieilnpr user=hieilnpr host=cornelius.db.elephantsql.com password=PFqhENzF4m-Fwksu8vDV20vN3P_D36Ls"
